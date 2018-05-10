@@ -4,7 +4,7 @@
 #
 Name     : atkmm
 Version  : 2.24.2
-Release  : 3
+Release  : 4
 URL      : http://ftp.acc.umu.se/pub/GNOME/sources/atkmm/2.24/atkmm-2.24.2.tar.xz
 Source0  : http://ftp.acc.umu.se/pub/GNOME/sources/atkmm/2.24/atkmm-2.24.2.tar.xz
 Summary  : C++ binding for the ATK accessibility toolkit
