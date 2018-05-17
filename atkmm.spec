@@ -4,7 +4,7 @@
 #
 Name     : atkmm
 Version  : 2.24.2
-Release  : 4
+Release  : 5
 URL      : http://ftp.acc.umu.se/pub/GNOME/sources/atkmm/2.24/atkmm-2.24.2.tar.xz
 Source0  : http://ftp.acc.umu.se/pub/GNOME/sources/atkmm/2.24/atkmm-2.24.2.tar.xz
 Summary  : C++ binding for the ATK accessibility toolkit
@@ -38,6 +38,14 @@ Provides: atkmm-devel
 dev components for the atkmm package.
 
 
+%package doc
+Summary: doc components for the atkmm package.
+Group: Documentation
+
+%description doc
+doc components for the atkmm package.
+
+
 %package lib
 Summary: lib components for the atkmm package.
 Group: Libraries
@@ -51,18 +59,23 @@ lib components for the atkmm package.
 %setup -q -n atkmm-2.24.2
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
+export SOURCE_DATE_EPOCH=1526568793
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1526568793
 rm -rf %{buildroot}
 %make_install
 
@@ -74,6 +87,58 @@ rm -rf %{buildroot}
 %files data
 %defattr(-,root,root,-)
 /usr/share/devhelp/books/atkmm-1.6/atkmm-1.6.devhelp2
+
+%files dev
+%defattr(-,root,root,-)
+/usr/include/atkmm-1.6/atkmm.h
+/usr/include/atkmm-1.6/atkmm/action.h
+/usr/include/atkmm-1.6/atkmm/component.h
+/usr/include/atkmm-1.6/atkmm/document.h
+/usr/include/atkmm-1.6/atkmm/editabletext.h
+/usr/include/atkmm-1.6/atkmm/hyperlink.h
+/usr/include/atkmm-1.6/atkmm/hypertext.h
+/usr/include/atkmm-1.6/atkmm/image.h
+/usr/include/atkmm-1.6/atkmm/implementor.h
+/usr/include/atkmm-1.6/atkmm/init.h
+/usr/include/atkmm-1.6/atkmm/noopobject.h
+/usr/include/atkmm-1.6/atkmm/object.h
+/usr/include/atkmm-1.6/atkmm/objectaccessible.h
+/usr/include/atkmm-1.6/atkmm/private/action_p.h
+/usr/include/atkmm-1.6/atkmm/private/component_p.h
+/usr/include/atkmm-1.6/atkmm/private/document_p.h
+/usr/include/atkmm-1.6/atkmm/private/editabletext_p.h
+/usr/include/atkmm-1.6/atkmm/private/hyperlink_p.h
+/usr/include/atkmm-1.6/atkmm/private/hypertext_p.h
+/usr/include/atkmm-1.6/atkmm/private/image_p.h
+/usr/include/atkmm-1.6/atkmm/private/implementor_p.h
+/usr/include/atkmm-1.6/atkmm/private/noopobject_p.h
+/usr/include/atkmm-1.6/atkmm/private/object_p.h
+/usr/include/atkmm-1.6/atkmm/private/objectaccessible_p.h
+/usr/include/atkmm-1.6/atkmm/private/range_p.h
+/usr/include/atkmm-1.6/atkmm/private/relation_p.h
+/usr/include/atkmm-1.6/atkmm/private/relationset_p.h
+/usr/include/atkmm-1.6/atkmm/private/selection_p.h
+/usr/include/atkmm-1.6/atkmm/private/stateset_p.h
+/usr/include/atkmm-1.6/atkmm/private/streamablecontent_p.h
+/usr/include/atkmm-1.6/atkmm/private/table_p.h
+/usr/include/atkmm-1.6/atkmm/private/text_p.h
+/usr/include/atkmm-1.6/atkmm/private/value_p.h
+/usr/include/atkmm-1.6/atkmm/range.h
+/usr/include/atkmm-1.6/atkmm/relation.h
+/usr/include/atkmm-1.6/atkmm/relationset.h
+/usr/include/atkmm-1.6/atkmm/selection.h
+/usr/include/atkmm-1.6/atkmm/stateset.h
+/usr/include/atkmm-1.6/atkmm/streamablecontent.h
+/usr/include/atkmm-1.6/atkmm/table.h
+/usr/include/atkmm-1.6/atkmm/text.h
+/usr/include/atkmm-1.6/atkmm/value.h
+/usr/include/atkmm-1.6/atkmm/wrap_init.h
+/usr/lib64/atkmm-1.6/include/atkmmconfig.h
+/usr/lib64/libatkmm-1.6.so
+/usr/lib64/pkgconfig/atkmm-1.6.pc
+
+%files doc
+%defattr(-,root,root,-)
 /usr/share/doc/atkmm-1.6/reference/atkmm-1.6.tag
 /usr/share/doc/atkmm-1.6/reference/html/annotated.html
 /usr/share/doc/atkmm-1.6/reference/html/arrowdown.png
@@ -253,55 +318,7 @@ rm -rf %{buildroot}
 /usr/share/doc/atkmm-1.6/reference/html/tab_s.png
 /usr/share/doc/atkmm-1.6/reference/html/tabs.css
 
-%files dev
-%defattr(-,root,root,-)
-/usr/include/atkmm-1.6/atkmm.h
-/usr/include/atkmm-1.6/atkmm/action.h
-/usr/include/atkmm-1.6/atkmm/component.h
-/usr/include/atkmm-1.6/atkmm/document.h
-/usr/include/atkmm-1.6/atkmm/editabletext.h
-/usr/include/atkmm-1.6/atkmm/hyperlink.h
-/usr/include/atkmm-1.6/atkmm/hypertext.h
-/usr/include/atkmm-1.6/atkmm/image.h
-/usr/include/atkmm-1.6/atkmm/implementor.h
-/usr/include/atkmm-1.6/atkmm/init.h
-/usr/include/atkmm-1.6/atkmm/noopobject.h
-/usr/include/atkmm-1.6/atkmm/object.h
-/usr/include/atkmm-1.6/atkmm/objectaccessible.h
-/usr/include/atkmm-1.6/atkmm/private/action_p.h
-/usr/include/atkmm-1.6/atkmm/private/component_p.h
-/usr/include/atkmm-1.6/atkmm/private/document_p.h
-/usr/include/atkmm-1.6/atkmm/private/editabletext_p.h
-/usr/include/atkmm-1.6/atkmm/private/hyperlink_p.h
-/usr/include/atkmm-1.6/atkmm/private/hypertext_p.h
-/usr/include/atkmm-1.6/atkmm/private/image_p.h
-/usr/include/atkmm-1.6/atkmm/private/implementor_p.h
-/usr/include/atkmm-1.6/atkmm/private/noopobject_p.h
-/usr/include/atkmm-1.6/atkmm/private/object_p.h
-/usr/include/atkmm-1.6/atkmm/private/objectaccessible_p.h
-/usr/include/atkmm-1.6/atkmm/private/range_p.h
-/usr/include/atkmm-1.6/atkmm/private/relation_p.h
-/usr/include/atkmm-1.6/atkmm/private/relationset_p.h
-/usr/include/atkmm-1.6/atkmm/private/selection_p.h
-/usr/include/atkmm-1.6/atkmm/private/stateset_p.h
-/usr/include/atkmm-1.6/atkmm/private/streamablecontent_p.h
-/usr/include/atkmm-1.6/atkmm/private/table_p.h
-/usr/include/atkmm-1.6/atkmm/private/text_p.h
-/usr/include/atkmm-1.6/atkmm/private/value_p.h
-/usr/include/atkmm-1.6/atkmm/range.h
-/usr/include/atkmm-1.6/atkmm/relation.h
-/usr/include/atkmm-1.6/atkmm/relationset.h
-/usr/include/atkmm-1.6/atkmm/selection.h
-/usr/include/atkmm-1.6/atkmm/stateset.h
-/usr/include/atkmm-1.6/atkmm/streamablecontent.h
-/usr/include/atkmm-1.6/atkmm/table.h
-/usr/include/atkmm-1.6/atkmm/text.h
-/usr/include/atkmm-1.6/atkmm/value.h
-/usr/include/atkmm-1.6/atkmm/wrap_init.h
-/usr/lib64/*.so
-/usr/lib64/atkmm-1.6/include/atkmmconfig.h
-/usr/lib64/pkgconfig/*.pc
-
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libatkmm-1.6.so.1
+/usr/lib64/libatkmm-1.6.so.1.1.0
