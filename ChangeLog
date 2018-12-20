@@ -1,3 +1,103 @@
+2018-11-04  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	2.28.0
+
+2018-11-04  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	2.24.3
+
+2018-10-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Update .gitignore
+
+	The Visual Studio build files now reside in MSVC_NMake, not MSVC_201x.
+
+2018-10-26  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	build: Remove the Visual Studio 2013 projects
+
+	Since they have been replaced by the NMake Makefiles, it is time that
+	they should be dropped.
+
+2018-10-26  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	build: Add a set of NMake Makefiles
+
+	This is the set of NMake Makefiles that is used to build atkmm using
+	Visual Studio 2013 and later, which will replace the current Visual
+	Studio 2013 project files, so that the Visual Studio build files are
+	easier to maintain.
+
+	Note that for the C++-11 version of atkmm, the DLL and library that are
+	generated from both the visual Studio 2015 and 2017 builds are
+	atkmm-vc140-1_6.[dll|lib] or atkmm-vc140-d-1_6.[dll|lib] as both Visual
+	Studio 2015 and 2017 link to the v140 Windows C/C++ runtime DLLs.
+
+2018-10-26  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	atk/atkmm/filelist.am: Split out automake'ism
+
+	Move the automake-specific part out so that this file can also be
+	re-used by the NMake Makefiles.
+
+2018-10-26  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	builds: Rename MSVC_Net2013 to MSVC_NMake
+
+	This is to prepare the transition of the Visual Studio build files to
+	NMake Makefiles.
+
+2018-10-25  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	configure.ac, atkmm.doap: Update bug report address
+
+2018-09-11  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	doc/reference/Doxyfile.in: Use doxygen-extra.css
+
+2017-09-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Update .gitignore
+
+2017-09-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	generate_defs_and_docs.sh: Update for atk built with meson
+
+	When atk is built with meson instead of autotools, generated .h and .c
+	files are stored in atk/build/atk. Files in that directory shall be read
+	when atk_docs.xml and the .defs files are generated.
+
+2017-06-27  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Text: Fix memory leaks in vfuncs
+
+	get_text_vfunc(), get_text_after_offset_vfunc(), get_text_at_offset_vfunc(),
+	get_text_before_offset_vfunc() and get_selection_vfunc() shall delete
+	the returned character array after it has been copied to a Glib::ustring.
+	Bug 783360
+
+2017-01-04  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Visual Studio builds: "Install" the .pdb files
+
+	Since we already generate the .pdb file during the build, we should make
+	good use of it to help debugging.
+
+2016-07-19  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Build: Fix silent builds
+
+	* configure.ac: Pass yes to AM_SILENT_RULES, thus enabling silent builds.
+	Replace MM_AX_CXX_COMPILE_STDCXX_11 by MM_AX_CXX_COMPILE_STDCXX (not necessary
+	for silent builds).
+	* docs/reference/Doxyfile.in: Set QUIET=YES.
+	Update for doxygen 1.8.11 (not necessary for silent builds).
+	Bug #768797
+
+2015-11-29  Murray Cumming  <murrayc@murrayc.com>
+
+	2.24.2
+
 2015-11-29  Murray Cumming  <murrayc@murrayc.com>
 
 	Require a recent glibmm.
