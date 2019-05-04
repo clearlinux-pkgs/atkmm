@@ -4,10 +4,10 @@
 #
 Name     : atkmm
 Version  : 2.28.0
-Release  : 7
+Release  : 8
 URL      : https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
-Summary  : C++ binding for the ATK accessibility toolkit
+Summary  : C++ bindings for ATK
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: atkmm-data = %{version}-%{release}
@@ -35,6 +35,7 @@ Group: Development
 Requires: atkmm-lib = %{version}-%{release}
 Requires: atkmm-data = %{version}-%{release}
 Provides: atkmm-devel = %{version}-%{release}
+Requires: atkmm = %{version}-%{release}
 
 %description dev
 dev components for the atkmm package.
@@ -74,7 +75,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545316844
+export SOURCE_DATE_EPOCH=1556992654
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -86,7 +94,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1545316844
+export SOURCE_DATE_EPOCH=1556992654
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/atkmm
 cp COPYING %{buildroot}/usr/share/package-licenses/atkmm/COPYING
