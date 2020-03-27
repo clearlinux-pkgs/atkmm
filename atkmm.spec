@@ -4,7 +4,7 @@
 #
 Name     : atkmm
 Version  : 2.28.0
-Release  : 8
+Release  : 9
 URL      : https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
 Summary  : C++ bindings for ATK
