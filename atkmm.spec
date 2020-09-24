@@ -4,7 +4,7 @@
 #
 Name     : atkmm
 Version  : 2.28.0
-Release  : 11
+Release  : 12
 URL      : https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.0.tar.xz
 Summary  : C++ binding for the ATK accessibility toolkit
