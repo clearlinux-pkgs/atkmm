@@ -1,4 +1,4 @@
-2.36.0
+2.36.1
 doxygen
 pkgconfig(glibmm-2.68)
 pkgconfig(mm-common-libstdc++)
