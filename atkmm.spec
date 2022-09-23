@@ -4,7 +4,7 @@
 #
 Name     : atkmm
 Version  : 2.36.2
-Release  : 15
+Release  : 16
 URL      : https://download.gnome.org/sources/atkmm/2.36/atkmm-2.36.2.tar.xz
 Source0  : https://download.gnome.org/sources/atkmm/2.36/atkmm-2.36.2.tar.xz
 Summary  : C++ binding for the ATK accessibility toolkit
