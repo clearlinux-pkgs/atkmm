@@ -4,7 +4,7 @@
 #
 Name     : atkmm
 Version  : 2.36.2
-Release  : 17
+Release  : 18
 URL      : https://download.gnome.org/sources/atkmm/2.36/atkmm-2.36.2.tar.xz
 Source0  : https://download.gnome.org/sources/atkmm/2.36/atkmm-2.36.2.tar.xz
 Summary  : C++ binding for the ATK accessibility toolkit
@@ -60,7 +60,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1658328282
+export SOURCE_DATE_EPOCH=1664139434
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -74,8 +74,8 @@ ninja -v -C builddir
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/atkmm
-cp %{_builddir}/atkmm-2.36.2/COPYING %{buildroot}/usr/share/package-licenses/atkmm/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/atkmm-2.36.2/COPYING.tools %{buildroot}/usr/share/package-licenses/atkmm/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/atkmm-%{version}/COPYING %{buildroot}/usr/share/package-licenses/atkmm/9a1929f4700d2407c70b507b3b2aaf6226a9543c || :
+cp %{_builddir}/atkmm-%{version}/COPYING.tools %{buildroot}/usr/share/package-licenses/atkmm/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
 DESTDIR=%{buildroot} ninja -C builddir install
 
 %files
